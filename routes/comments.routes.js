@@ -9,12 +9,12 @@ router.get('/comments', commentsController.getAllcomments);
 router.post('/comments', commentsController.createcomment);
 
 // Ma'lum bir so'zni ko'rish
-router.get('/comments:id', commentsController.getcomment);
+router.get('/comments/:id', commentsController.getcomment);
 
 // Ma'lum bir so'zni yangilash
-router.patch('/comments:id', commentsController.updatecomment);
+router.patch('/comments/:id', commentsController.updatecomment);
 
 // Ma'lum bir so'zni o'chirish
-router.delete('/comments:id', commentsController.deletecomment);
+router.delete('/comments/:id', commentsController.deletecomment);
 
 export default router;

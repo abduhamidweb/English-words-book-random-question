@@ -62,7 +62,7 @@ class commentController {
     // So'z ma'lumotlarini ko'rish
     async getcomment(req, res) {
         try {
-            const comment = await comment.findById(req.params.id);
+            const comment = await commentsSchema.findById(req.params.id);
             res.status(200).json(comment);
         } catch (err) {
             res.status(404).json({
@@ -74,7 +74,7 @@ class commentController {
     // So'zni o'zgartirish
     async updatecomment(req, res) {
         try {
-            const updatedcomment = await comment.findByIdAndUpdate(req.params.id, req.body, {
+            const updatedcomment = await commentsSchema.findByIdAndUpdate(req.params.id, req.body, {
                 new: true
             });
             res.status(200).json(updatedcomment);
@@ -88,7 +88,7 @@ class commentController {
     // So'zni o'chirish
     async deletecomment(req, res) {
         try {
-            await comment.findByIdAndRemove(req.params.id);
+            await commentsSchema.findByIdAndRemove(req.params.id);
             res.status(200).json({
                 message: 'So\'z o\'chirildi'
             });
