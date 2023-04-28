@@ -46,7 +46,7 @@ class userController {
             id
         } = req.params;
         try {
-            const user = await user.findById(id).populate('words');
+            const user = await usersSchema.findById(id);
             res.status(200).json(user);
         } catch (error) {
             res.status(404).json({
@@ -66,7 +66,7 @@ class userController {
             voice
         } = req.body;
         try {
-            const updateduser = await user.findByIdAndUpdate(
+            const updateduser = await usersSchema.findByIdAndUpdate(
                 id, {
                     user_name,
                     user_description,
@@ -89,7 +89,7 @@ class userController {
             id
         } = req.params;
         try {
-            await user.findByIdAndRemove(id);
+            await usersSchema.findByIdAndRemove(id);
             res.status(200).json({
                 message: 'user deleted successfully.'
             });
